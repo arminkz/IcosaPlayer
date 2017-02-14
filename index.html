@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+        <title>AKP - Portfolio of Armin Kazemi</title>
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:url" content="http://4kp.ir/">
+        <meta property="og:title" content="AKP">
+        <meta property="og:image" content="share.png">
+        <meta property="og:description" content="Portfolio of Armin Kazemi">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@arminkz">
+        <meta name="twitter:title" content="AKP">
+        <meta name="twitter:description" content="Portfolio of Armin Kazemi">
+        <meta name="twitter:image" content="share.jpg">
+
+        <!-- Google Font Library -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Inconsolata:400,700">
+
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Bootstrap 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+        <!--Three.JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js" type="text/javascript"></script>
+        <script src="js/CopyShader.js" type="text/javascript"></script>
+        <script src="js/RGBShiftShader.js" type="text/javascript"></script>
+        <script src="js/EffectComposer.js" type="text/javascript"></script>
+        <script src="js/RenderPass.js" type="text/javascript"></script>
+        <script src="js/ShaderPass.js" type="text/javascript"></script>
+
+        <!--Typed.JS-->
+        <script src="js/typed.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/typed.css">
+
+        <!--CSS-->
+        <link rel="stylesheet" href="css/main.css">
+      
+  </head>
+  <body>
+      
+      <canvas id="webglhost">
+        Please Upgrade to Modern Browsers !
+      </canvas>
+      
+      <div class="music">
+     
+        <div class="music-info">
+            <a href="https://soundcloud.com/" target="_blank" class="music-soundcloud">
+                <img src="img/logo/soundcloud.png">
+            </a>
+            <span class="music-desc">
+                <a href="#" target="_blank" class="music-title">Music</a> by <a href="#" target="_blank" class="music-user">User</a>
+            </span>
+        </div>
+
+        <div class="music-btns">
+
+            <button class="music-btn music-prev" onclick="prevAudio()">
+                <svg viewbox="0 0 9.2 12" class="music-btn-icon">
+                    <path fill="none" d="M8.9,11.7L3.2,6l5.7-5.7"></path>
+                    <path fill="none" d="M0.5,11.7l0-11.3"></path>
+                </svg>
+            </button> 
+
+            <button class="music-btn music-toggle" onclick="toggleAudio()">
+                <svg viewbox="0 0 6.7 12" class="music-btn-icon music-btn-icon-pause">
+                    <path fill="none" d="M0.5,0v11.3"></path>
+                    <path fill="none" d="M6.2,11.3V0"></path>
+                </svg>
+                <svg viewbox="0 0 6.7 12" class="music-btn-icon music-btn-icon-play">
+                    <path fill="none" d="M0.4,0.4L6,6l-5.7,5.7"></path>
+                </svg>
+            </button> 
+
+            <button class="music-btn music-next" onclick="nextAudio()">
+                <svg viewbox="0 0 9.2 12" class="music-btn-icon">
+                    <path fill="none" d="M0.4,0.4L6,6l-5.7,5.7"></path>
+                    <path fill="none" d="M8.7,0.4l0,11.3"></path>
+                </svg>
+            </button>
+            
+            <button class="music-btn music-fullscreen" onclick="makeFullscreen()">
+                <svg viewbox="0 0 10 10" class="music-btn-icon">
+                    <path fill="none" d="M3.0,7.0L0.0,7.0L0.0,0.0L7.0,0.0L7.0,3.0L3.0,3.0L3.0,10.0L10.0,10.0L10.0,3.0L7.0,3.0"></path>
+                </svg>
+            </button>
+
+        </div>
+        
+    </div>
+    
+    <div class="menu" id="main-menu">
+        <ul>
+            <li class="menu-item" onclick="showProfile()">about</li>
+            <li class="menu-item" onclick="showProjects()">projects</li>
+            <li class="menu-item">resume</li>
+        </ul>
+    </div>
+    
+    <div class="profile">
+        <div class="profile-main">
+            <div class="profile-text">
+                
+            </div>
+        </div>
+        
+        <div class="menu">
+            <ul>
+                <li class="menu-item" onclick="back()">close</li>
+            </ul>
+        </div>
+        
+        <div class="social">
+            <ul>
+                <li class="social-item">
+                    <a target="_blank" href="https://www.linkedin.com/in/armin-kazemi-22555b120">
+                        <svg class="logo" viewBox="0 0 48.331 46.196" width="21px" height="20px">
+                            <path d="M8.133,3c3.106,0,5.016,2.024,5.074,4.683c0,2.607-1.968,4.686-5.129,4.686H8.015C4.972,12.369,3,10.287,3,7.683		C3,5.024,5.03,3,8.133,3 M34.883,15.436c5.97,0,10.448,3.875,10.448,12.208v15.554h-9.073V28.684c0-3.646-1.316-6.134-4.595-6.134		c-2.514,0-4.003,1.679-4.657,3.299c-0.241,0.58-0.3,1.388-0.3,2.196v15.152h-9.073c0,0,0.12-24.581,0-27.123h9.073v3.845		C27.911,18.072,30.063,15.436,34.883,15.436 M12.614,43.197H3.538V16.076h9.076V43.197z M8.133,0C3.497,0,0,3.303,0,7.683		c0,2.255,0.913,4.225,2.423,5.606c-1.105,0.443-1.885,1.523-1.885,2.786v27.123c0,1.655,1.343,3,3,3h9.076		c1.05,0,1.974-0.54,2.51-1.356c0.11,0.168,0.238,0.327,0.383,0.472c0.563,0.565,1.328,0.885,2.126,0.885h9.073c1.656,0,3-1.345,3-3		V28.045c0-0.792,0.072-1.049,0.082-1.076c0.381-0.94,1.012-1.419,1.875-1.419c0.596,0,1.595,0,1.595,3.134v14.514		c0,1.655,1.343,3,3,3h9.073c1.656,0,3-1.345,3-3V27.644c0-11.213-6.947-15.208-13.448-15.208c-2.562,0-4.567,0.611-6.124,1.451		c-0.537-0.503-1.259-0.812-2.053-0.812h-9.073c-0.82,0-1.605,0.336-2.171,0.93c-0.126,0.132-0.239,0.275-0.338,0.426		c-0.332-0.506-0.813-0.905-1.38-1.136c1.535-1.381,2.463-3.353,2.463-5.612c0-0.022,0-0.044-0.001-0.066		C16.109,3.203,12.713,0,8.133,0"></path>
+                        </svg>
+                        <svg class="square" width="50" height="50">
+                            <line class="top" x1="50" y1="0" x2="100" y2="0"/>
+                            <line class="right" x1="50" y1="50" x2="50" y2="100"/>
+                            <line class="bottom" x1="0" y1="50" x2="-50" y2="50"/>
+                            <line class="left" x1="0" y1="0" x2="0" y2="-50"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a target="_blank" href="http://github.com/arminkz">
+                        <svg class="logo" viewBox="0 0 45.335 51.972" width="20px" height="23px">
+                            <path d="M38.354,3c0.274,0,0.521,0.035,0.736,0.104c1.119,2.809,1.219,5.345,0.298,7.607c1.964,2.114,2.946,4.675,2.946,7.68		c0,2.114-0.254,3.985-0.764,5.614c-0.509,1.627-1.169,2.932-1.975,3.915c-0.81,0.98-1.815,1.808-3.021,2.478		c-1.205,0.674-2.374,1.158-3.504,1.455c-1.134,0.301-2.407,0.523-3.824,0.674c1.292,1.116,1.94,2.882,1.94,5.294v11.151H16.939		v-8.616l-0.858,0.15c-0.489,0.088-1.096,0.131-1.819,0.131c-0.082,0-0.165,0-0.25-0.001c-0.831-0.014-1.696-0.099-2.59-0.262		c-0.896-0.161-1.727-0.534-2.498-1.117c-0.771-0.586-1.319-1.35-1.64-2.293L6.91,36.105c-0.247-0.571-0.639-1.207-1.175-1.901		c-0.534-0.697-1.075-1.169-1.62-1.417L3.854,32.6c-0.174-0.123-0.335-0.272-0.484-0.446c-0.15-0.176-0.262-0.35-0.336-0.523		c-0.076-0.175-0.013-0.318,0.186-0.429c0.199-0.112,0.559-0.168,1.081-0.168l0.746,0.111c0.497,0.101,1.111,0.397,1.846,0.896		c0.733,0.496,1.335,1.142,1.808,1.937c0.572,1.02,1.261,1.797,2.069,2.331c0.807,0.534,1.623,0.804,2.443,0.804		c0.82,0,1.529-0.063,2.125-0.187c0.597-0.125,1.156-0.311,1.678-0.561c0.224-1.665,0.832-2.946,1.826-3.839		c-1.417-0.15-2.69-0.373-3.821-0.674c-1.131-0.297-2.3-0.781-3.504-1.455c-1.206-0.67-2.208-1.504-3.003-2.498		c-0.796-0.994-1.448-2.299-1.958-3.915c-0.51-1.616-0.764-3.48-0.764-5.594c0-3.008,0.983-5.568,2.948-7.68		C7.818,8.449,7.904,5.913,8.999,3.104c0.206-0.064,0.44-0.096,0.703-0.096c0.657,0,1.491,0.2,2.503,0.599		c1.417,0.561,2.456,1.039,3.115,1.437c0.66,0.397,1.187,0.733,1.585,1.005c2.313-0.645,4.697-0.967,7.16-0.967		c2.46,0,4.847,0.322,7.157,0.967l1.417-0.894c0.97-0.596,2.113-1.144,3.433-1.64C36.979,3.171,37.74,3,38.354,3 M38.354,0L38.354,0		c-0.989,0-2.083,0.232-3.344,0.709c-1.483,0.558-2.813,1.195-3.943,1.891L30.71,2.825c-2.155-0.494-4.386-0.743-6.646-0.743		c-2.253,0-4.477,0.248-6.629,0.739c-0.179-0.111-0.369-0.227-0.567-0.347C16.065,1.99,14.9,1.448,13.309,0.817		c-1.383-0.545-2.562-0.809-3.608-0.809c-0.563,0-1.097,0.078-1.59,0.23L6.728,0.666l-0.525,1.35		c-1.108,2.846-1.376,5.543-0.805,8.043c-1.731,2.393-2.606,5.188-2.606,8.332c0,2.411,0.304,4.597,0.903,6.496		c0.378,1.198,0.835,2.277,1.367,3.228l-0.317-0.049l-0.221-0.032H4.3c-1.086,0-1.874,0.171-2.553,0.554		c-1.541,0.863-2.159,2.649-1.464,4.242c0.183,0.432,0.46,0.871,0.81,1.278c0.315,0.365,0.659,0.681,1.028,0.941l0.247,0.177		l0.238,0.17l0.265,0.121c-0.003,0,0.177,0.112,0.483,0.513c0.479,0.62,0.701,1.031,0.803,1.269l0.332,0.763		c0.523,1.455,1.404,2.66,2.62,3.585c1.153,0.872,2.423,1.437,3.781,1.682c1.021,0.186,2.049,0.29,3.049,0.308v5.337v3h3h14.247h3v-3		V37.82c0-1.11-0.113-2.135-0.337-3.07c1.36-0.359,2.771-0.942,4.187-1.732c1.522-0.846,2.827-1.92,3.873-3.189		c1.055-1.285,1.903-2.941,2.524-4.927c0.598-1.911,0.9-4.101,0.9-6.51c0-3.143-0.875-5.939-2.605-8.333		c0.568-2.509,0.285-5.213-0.853-8.065L41.354,0.68l-1.347-0.433C39.495,0.083,38.939,0,38.354,0"></path>
+                        </svg>
+                        <svg class="square" width="50" height="50">
+                            <line class="top" x1="50" y1="0" x2="100" y2="0"/>
+                            <line class="right" x1="50" y1="50" x2="50" y2="100"/>
+                            <line class="bottom" x1="0" y1="50" x2="-50" y2="50"/>
+                            <line class="left" x1="0" y1="0" x2="0" y2="-50"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a target="_blank" href="mailto:arminkz@live.com">
+                        <svg class="logo" viewBox="0 0 47.192 34.182" width="21px" height="16px">
+                            <path d="M3,3h41.193v28.183H3V3z M0,0v3v28.182v3h3h41.193h2.999V0H0z"></path>
+                            <path d="M39.958,10.612l-15.514,9.559c-0.26,0.16-0.554,0.24-0.849,0.24c-0.294,0-0.588-0.08-0.848-0.24L7.234,10.612		c-0.76-0.468-0.996-1.464-0.527-2.223C7.175,7.629,8.171,7.394,8.93,7.86l14.666,9.037L38.262,7.86		c0.761-0.468,1.757-0.231,2.225,0.529C40.954,9.148,40.718,10.145,39.958,10.612"></path>
+                        </svg>
+                        <svg class="square" width="50" height="50">
+                            <line class="top" x1="50" y1="0" x2="100" y2="0"/>
+                            <line class="right" x1="50" y1="50" x2="50" y2="100"/>
+                            <line class="bottom" x1="0" y1="50" x2="-50" y2="50"/>
+                            <line class="left" x1="0" y1="0" x2="0" y2="-50"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a target="_blank" href="https://twitter.com/arminkz">
+                        <svg class="logo" viewBox="0 0 51.572 43.03" width="23px" height="19px">
+                            <path d="M34.551,3c2.688,0,5.12,1.139,6.836,2.943c2.111-0.415,4.124-1.181,5.934-2.249c-0.695,2.184-2.178,4.012-4.124,5.169		c1.898-0.232,3.708-0.742,5.376-1.484c-1.252,1.881-2.849,3.525-4.658,4.848l0.023,1.205c0,12.354-9.411,26.607-26.613,26.607		C12.043,40.039,7.13,38.49,3,35.82c0.718,0.095,1.466,0.142,2.225,0.142c4.385,0,8.414-1.507,11.613-4.011		c-4.1-0.071-7.53-2.783-8.735-6.492c0.576,0.119,1.157,0.166,1.762,0.166c0.855,0,1.692-0.117,2.457-0.325		c-4.266-0.86-7.488-4.634-7.488-9.156v-0.118c1.252,0.7,2.688,1.115,4.219,1.163C6.549,15.52,4.905,12.642,4.905,9.42		c0-1.714,0.463-3.334,1.276-4.705c4.586,5.655,11.493,9.363,19.261,9.761c-0.167-0.676-0.232-1.394-0.232-2.136		C25.21,7.195,29.382,3,34.551,3 M34.551,0c-6.377,0-11.64,4.862-12.275,11.073c-5.389-1.052-10.284-3.956-13.764-8.248		c-0.572-0.705-1.43-1.11-2.33-1.11c-0.073,0-0.146,0.003-0.219,0.008C4.983,1.795,4.101,2.34,3.6,3.185		C2.491,5.055,1.905,7.211,1.905,9.42c0,1.552,0.288,3.061,0.829,4.462c-0.569,0.557-0.9,1.327-0.9,2.143v0.118		c0,3.241,1.275,6.247,3.388,8.48c-0.165,0.568-0.161,1.182,0.028,1.763c0.793,2.441,2.293,4.509,4.228,6		c-1.369,0.381-2.795,0.575-4.253,0.575c-0.63,0-1.246-0.038-1.831-0.115c-0.133-0.019-0.265-0.027-0.396-0.027		c-1.242,0-2.375,0.773-2.813,1.964C-0.3,36.1,0.193,37.577,1.371,38.339c4.756,3.074,10.272,4.699,15.953,4.699		c18.438,0,29.494-14.894,29.612-29.374c1.6-1.35,2.985-2.9,4.133-4.624c0.74-1.111,0.656-2.577-0.205-3.597		c-0.218-0.258-0.473-0.473-0.751-0.639c0.022-0.067,0.044-0.134,0.066-0.202c0.376-1.185-0.018-2.48-0.99-3.255		c-0.544-0.433-1.205-0.654-1.87-0.654c-0.525,0-1.052,0.138-1.524,0.417c-1.119,0.661-2.318,1.178-3.577,1.545		C40.039,0.952,37.328,0,34.551,0"></path>
+                        </svg>
+                        <svg class="square" width="50" height="50">
+                            <line class="top" x1="50" y1="0" x2="100" y2="0"/>
+                            <line class="right" x1="50" y1="50" x2="50" y2="100"/>
+                            <line class="bottom" x1="0" y1="50" x2="-50" y2="50"/>
+                            <line class="left" x1="0" y1="0" x2="0" y2="-50"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a target="_blank" href="tg://resolve?domain=arminkz">
+                        <svg class="logo" viewBox="0 0 189.473 189.473" width="25px" height="20px">
+                            	<path d="M152.531,179.476c-1.48,0-2.95-0.438-4.211-1.293l-47.641-32.316l-25.552,18.386c-2.004,1.441-4.587,1.804-6.914,0.972
+                                c-2.324-0.834-4.089-2.759-4.719-5.146l-12.83-48.622L4.821,93.928c-2.886-1.104-4.8-3.865-4.821-6.955
+                                c-0.021-3.09,1.855-5.877,4.727-7.02l174.312-69.36c0.791-0.336,1.628-0.53,2.472-0.582c0.302-0.018,0.605-0.018,0.906-0.001
+                                c1.748,0.104,3.465,0.816,4.805,2.13c0.139,0.136,0.271,0.275,0.396,0.42c1.11,1.268,1.72,2.814,1.835,4.389
+                                c0.028,0.396,0.026,0.797-0.009,1.198c-0.024,0.286-0.065,0.571-0.123,0.854L159.898,173.38c-0.473,2.48-2.161,4.556-4.493,5.523
+                                C154.48,179.287,153.503,179.476,152.531,179.476z M104.862,130.579l42.437,28.785L170.193,39.24l-82.687,79.566l17.156,11.638
+                                C104.731,130.487,104.797,130.533,104.862,130.579z M69.535,124.178l5.682,21.53l12.242-8.809l-16.03-10.874
+                                C70.684,125.521,70.046,124.893,69.535,124.178z M28.136,86.782l31.478,12.035c2.255,0.862,3.957,2.758,4.573,5.092l3.992,15.129
+                                c0.183-1.745,0.974-3.387,2.259-4.624L149.227,38.6L28.136,86.782z"/>
+                        </svg>
+                        <svg class="square" width="50" height="50">
+                            <line class="top" x1="50" y1="0" x2="100" y2="0"/>
+                            <line class="right" x1="50" y1="50" x2="50" y2="100"/>
+                            <line class="bottom" x1="0" y1="50" x2="-50" y2="50"/>
+                            <line class="left" x1="0" y1="0" x2="0" y2="-50"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+      
+      
+    <div class="projects">
+        
+        
+        <div class="menu">
+            <ul>
+                <li class="menu-item" onclick="back2()">close</li>
+            </ul>
+        </div>
+        
+        
+        <div class="projects-main">          
+            <div class="view">  
+                <img src="img/proj/poor_craft_1.png" />  
+                <div class="mask">  
+                    <h2>PoorCraft</h2>  
+                    <p>BETA</p>  
+                </div>  
+            </div>  
+            
+            <div class="view">  
+                <img src="img/proj/pacman_1.png" />  
+                <div class="mask">  
+                    <h2>PacMan</h2>  
+                    <!--<p>Your Text 2</p>-->    
+                </div>  
+            </div> 
+            
+            <div class="view">  
+                <img src="img/proj/mathgp_1.png" />  
+                <div class="mask">  
+                    <h2>MathGP</h2>  
+                    <p>v11.0</p>  
+                </div>  
+            </div>  
+            
+            <div class="view">  
+                <img src="1.jpg" />  
+                <div class="mask">  
+                    <h2>More ...</h2>   
+                </div>  
+            </div>  
+            
+        </div>
+    </div>
+      
+      
+      <!--JS-->
+      <script src="js/main.js"></script>
+  </body>
+</html>
