@@ -2,7 +2,8 @@
 My Personal Webpage/Portfolio with focus on Front-End Development.
 
 
-# Technologies Used :
+Used Technologies
+-----------------
 
 - jQuery , Typed.js , Three.js
 - WebGL
