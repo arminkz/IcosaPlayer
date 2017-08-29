@@ -233,16 +233,106 @@ a {
     background: rgba(0,0,0,.65);
 }
 
-.projects-main{
-    position: absolute;
-    width: 60%;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    vertical-align: middle;
+.slideshow-desc{
+  top:50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  max-width: 900px;
+  position: absolute;
+  margin: auto;
 }
 
-.projects-main .view{
+.slideshow-container {
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dotblock:not(:first-child) {
+	margin-left : 10px;
+}
+
+.dotblock {
+  background : none;
+  border : none;
+  font-size : 0;
+  width : 25px;
+  height : 50px;
+  outline : none;
+  opacity : .5;
+  padding : 0;
+  transition : opacity .4s ease;
+  cursor : pointer;
+}
+
+.dotblock:after {
+  background : #FFF;
+  content : "";
+  display : block;
+  height : 3px;
+  width : 25px;
+}
+
+.active, .dotblock:hover {
+  opacity : 1;
+}
+
+.desc {
+  color : #FFF;
+}
+
+.slide-text, .slide-title {
+  display : none;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/*.projects-main .view{
     width: 30%;
     height : 20%;
     float : left;
@@ -284,4 +374,4 @@ a {
 
 .projects-main .view .mask a{
     margin-left: 25px;
-}
+}*/

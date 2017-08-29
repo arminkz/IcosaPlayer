@@ -1,8 +1,44 @@
+var slideIndex = 1;
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+var dtitle = document.getElementsByClassName("desc-title")[0];
+var dtext = document.getElementsByClassName("desc-text")[0];
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dotblock");
+  if (n > slides.length) {slideIndex = 1} 
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; 
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  
+
+  console.log("SLIDE !");
+  console.log(slides[slideIndex-1].getElementsByClassName("slide-text")[0].innerHTML);
+  
+  dtitle.innerHTML = slides[slideIndex-1].getElementsByClassName("slide-title")[0].innerHTML;
+  dtext.innerHTML = slides[slideIndex-1].getElementsByClassName("slide-text")[0].innerHTML;
+}
+
 function showProfile(){
     $("#main-menu").fadeOut(1000);
     $(".profile").delay(1000).fadeIn(1000);
     $(".profile-text").typed({
-        strings: ["^1500 <h1>Hi ! ^500, Im Armin Kazemi.</h1> ^500 <br> ^400 <br>im 19 years old ^1000 and studying Computer Engineering ^500 in Amirkabir University of Technology. ^1000<br><br>Im a Full-time Geek! ^500 and Im Interested in Desktop ^300 / Mobile ^300 / Web App ^300 Development ^1000 i also have an interest in IoT and Robotics. ^1000 <br><br>I love computers ^300 , listening to music ^300, traveling ^300 and games a lot ^300:^300D^300  "],
+        strings: ["^1500 <h1>Hi ! ^500, Im Armin Kazemi.</h1> ^500 <br> ^400 <br>im 20 years old ^1000 and studying Computer Engineering ^500 at Amirkabir University of Technology. ^1000<br><br>Im a Full-time Geek! ^500 and Im Interested in Desktop ^300 / Mobile ^300 / Web App ^300 Development ^1000 i also have an interest in IoT and Robotics. ^1000 <br><br>I love computers ^300 , listening to music ^300, traveling ^300 and games a lot ^300:^300D^300  "],
         typeSpeed: 20
     });
 }
@@ -10,6 +46,7 @@ function showProfile(){
 function showProjects(){
     $("#main-menu").fadeOut(1000);
     $(".projects").delay(1000).fadeIn(1000);
+	showSlides(1);
 }
 
 function back(){
