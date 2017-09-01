@@ -35,8 +35,9 @@ function showSlides(n) {
 }
 
 function showProfile(){
-    $("#main-menu").fadeOut(1000);
-    $(".profile").delay(1000).fadeIn(1000);
+    $("#main-menu").fadeOut( {queue: false, duration: 600 });
+	$(".lyrics-area").fadeOut(300)
+    $(".profile").delay(600).fadeIn(600);
     $(".profile-text").typed({
         strings: ["^1500 <h1>Hi ! ^500, Im Armin Kazemi.</h1> ^500 <br> ^400 <br>im 20 years old ^1000 and studying Computer Engineering ^500 at Amirkabir University of Technology. ^1000<br><br>Im a Full-time Geek! ^500 and Im Interested in Desktop ^300 / Mobile ^300 / Web App ^300 Development ^1000 i also have an interest in IoT and Robotics. ^1000 <br><br>I love computers ^300 , listening to music ^300, traveling ^300 and games a lot ^300:^300D^300  "],
         typeSpeed: 20
@@ -44,29 +45,29 @@ function showProfile(){
 }
 
 function showProjects(){
-    $("#main-menu").fadeOut(1000);
-    $(".projects").delay(1000).fadeIn(1000);
+    $("#main-menu").fadeOut( {queue: false, duration: 600 });
+	$(".lyrics-area").fadeOut(300);
+    $(".projects").delay(600).fadeIn(600);
 	showSlides(1);
 }
 
 function back(){
-    $(".profile").fadeOut(1000);
-    $("#main-menu").delay(1000).fadeIn(1000);
+    $(".profile").fadeOut(600);
+    $("#main-menu").delay(600).fadeIn({queue: false, duration: 600 });
+	$(".lyrics-area").delay(600).fadeIn(600);
 }
 
 function back2(){
-    $(".projects").fadeOut(1000);
-    $("#main-menu").delay(1000).fadeIn(1000);
+    $(".projects").fadeOut(600);
+    $("#main-menu").delay(600).fadeIn({queue: false, duration: 600 });
+	$(".lyrics-area").delay(600).fadeIn(600);
 }
 
 var playIndex = 0;
 
-var music = [{name:"Sugar Rush",artist:"PIXL",url:'http://4kp.ir/music/05.mp3'},
-             {name:"This is What it Feels Like",artist:"Armin Van Buuren",url:'http://4kp.ir/music/01.mp3'},    
-             {name:"Savage",artist:"Case & Point",url:'http://4kp.ir/music/02.mp3'},
-             {name:"Thunder",artist:"W&W",url:'http://4kp.ir/music/03.mp3'},
-             {name:"Surface",artist:"Aero Chord",url:'http://4kp.ir/music/04.mp3'}];
-
+var music = [{name:"Saeed",artist:"Infected Mushrooms",url:'saeed.mp3',lrc:'saeed.lrc'},
+             {name:"Open",artist:"Yellow Claw",url:'open.mp3',lrc:'open.lrc'},
+			 {name:"Whatever it takes",artist:"Imagine Dragons",url:'weit.mp3',lrc:'weit.lrc'}];
 
 var audio;
 var audioContext;
@@ -127,6 +128,11 @@ function prevAudio(){
     newAudio(playIndex);
 }
 
+var subtitles = [];
+var upcomingSubtitle;
+var currSubtitle = "";
+var subIndex = 0;
+
 function newAudio(index){
     audio = new Audio(music[index].url);
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -135,10 +141,70 @@ function newAudio(index){
     audioAnalyser = audioContext.createAnalyser();
     audioSource.connect(audioAnalyser);
     audio.addEventListener('ended', function () {nextAudio();});
+	audio.addEventListener('timeupdate', function() {timeUpdated();});
+	
+	subtitles = [];
+	subIndex = 0;
+	$('#subtext').html("");
+	jQuery.get(music[index].lrc,function(data){
+		loadLRC(data);
+		upcomingSubtitle = subtitles[subIndex];
+	});
+	
     audio.play();
 
     $(".music-title").html(music[index].name);
     $(".music-user").html(music[index].artist);
+}
+
+function strip(s) {
+	return s.replace(/^\s+|\s+$/g,"");
+}
+
+function loadLRC(data) {
+	var lrc = data.replace(/\r\n|\r|\n/g, '\n');
+	lrc = strip(lrc);
+	
+	var lines = lrc.split('\n');
+	
+	for(i=0;i<lines.length;i++) {
+		
+		line = lines[i];
+		
+		bs = line.indexOf('[');
+		be = line.indexOf(']');
+		
+		time = line.substr(bs+1,be-bs-1);
+		text = line.substr(be+1);
+		
+		sub_obj = {};
+		sub_obj.time = time;
+		sub_obj.text = text;
+		
+		subtitles.push(sub_obj);
+	}
+	
+	console.log("LRC Loaded");
+	console.log(subtitles);
+}
+
+function timeUpdated() {
+	var t = audio.currentTime;
+	var subt = upcomingSubtitle.time.split(':');
+	var submin = parseInt(subt[0]);
+	var subsec = parseFloat(subt[1]);
+	var subTime = submin * 60 + subsec;
+	
+	if(t + 0.2 >= subTime){
+		currSubtitle = upcomingSubtitle.text;
+		subIndex++;
+		upcomingSubtitle = subtitles[subIndex];
+		$('#subtext').animate({'opacity': 0}, 200, function(){
+			$(this).html(currSubtitle).animate({'opacity': 1}, 200);
+		});
+
+	}
+	
 }
 
 $(".music-btn-icon-play").attr("display","none");
