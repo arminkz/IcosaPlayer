@@ -208,7 +208,12 @@ function timeUpdated() {
 }
 
 $(".music-btn-icon-play").attr("display","none");
-newAudio(playIndex);
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	$('#mobile-alert').show();
+}else{
+	newAudio(playIndex);
+}
 
 var PI = 3.14159265;
 

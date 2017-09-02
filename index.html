@@ -9,7 +9,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <meta property="og:url" content="http://4kp.ir/">
+        <meta property="og:url" content="http://player.4kp.ir/">
         <meta property="og:title" content="AKP">
         <meta property="og:image" content="share.png">
         <meta property="og:description" content="Portfolio of Armin Kazemi">
@@ -22,6 +22,7 @@
 
         <!-- Google Font Library -->
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Inconsolata:400,700">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -50,8 +51,15 @@
   <body>
       
       <canvas id="webglhost">
-        Please Upgrade to Modern Browsers !
+        <p id="nogl-alert">Please Upgrade to Modern Browsers !</p>
       </canvas>
+	  
+	  <div id="mobile-alert">
+		<h1>SORRY !</h1>
+		<p>This Experience is not designed for Mobile Devices. Try with a Desktop Computer instead.</p>	
+		<br/>
+		<p>Mobile Version is Coming Soon ...</p>
+	  </div>
       
       <div class="music">
      
@@ -299,6 +307,6 @@
       
       
       <!--JS-->
-      <script src="js/main.js?v=11"></script>
+      <script src="js/main.js?v=12"></script>
   </body>
 </html>
