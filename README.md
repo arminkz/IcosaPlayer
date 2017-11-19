@@ -1,7 +1,9 @@
-# 4KP.ir
-My Personal Webpage/Portfolio with focus on Front-End Development.
-
+# IcosaPlayer
 Enjoy Listening to your Music along with Lyrics and Visualizations.
+
+the Name has gotten from Icosahedron an geometrical shape.
+>an icosahedron (/ˌaɪkɒsəˈhiːdrən, -kə-, -koʊ-/ or /aɪˌkɒsəˈhiːdrən/) is a polyhedron with 20 faces. The name comes from Greek εἴκοσι (eíkosi), meaning 'twenty', and ἕδρα (hédra), meaning 'seat'.
+from Wikipedia
 
 ![Alt text](/../master/scn.png?raw=true "AKP")
 
