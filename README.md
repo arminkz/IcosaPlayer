@@ -8,14 +8,6 @@ from Wikipedia
 ![Alt text](/../master/scn.png?raw=true "AKP")
 
 
-TODO
-----
-
-- Ability to Upload your own Music
-- More Visualizations with WebGL
-- Responsive Design (in progress)
-
-
 Used Technologies
 -----------------
 
@@ -25,3 +17,10 @@ Used Technologies
 - Twitter / OG Cards API
 - HTML5 Canvas , Web Audio API
 - CSS3 Animations
+
+TODO
+----
+
+- Ability to Upload your own Music
+- More Visualizations with WebGL
+- Responsive Design (in progress)
